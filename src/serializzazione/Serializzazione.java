@@ -23,22 +23,23 @@ public class Serializzazione {
      */
     public static void main(String[] args) throws ClassNotFoundException {
         Studente s = new Studente("Andrea", "Forestiero", 22);
-        float f = (float) 0.00001;
         
         try { 
-            FileOutputStream FO = new FileOutputStream("test.ser");
-            ObjectOutputStream OS = new ObjectOutputStream(FO);                                                 
+            FileOutputStream FO = new FileOutputStream("C:\\Users\\violaboros.federico\\Documents\\NetBeansProjects\\Serializzazione\\src\\serializzazione\\test.ser");
+            ObjectOutputStream OS = new ObjectOutputStream(FO);  
+            OS.writeObject(s);
 //            OS.writeObject(9);
 //            OS.writeObject("hey");
-            OS.writeObject(f);
 //            OS.writeObject(false);
 //            OS.writeObject('t');
             OS.flush();                
             OS.close();
             FO.close();
             
-//            FileInputStream FI = new FileInputStream("test.ser");
-//            ObjectInputStream IS = new ObjectInputStream(FI);
+            FileInputStream FI = new FileInputStream("C:\\Users\\violaboros.federico\\Documents\\NetBeansProjects\\Serializzazione\\src\\serializzazione\\test.ser");
+            ObjectInputStream IS = new ObjectInputStream(FI);
+            Studente v1 = (Studente) IS.readObject();
+            System.out.println("v1--> "+v1.toString());
 //            int v1 = (int) IS.readObject();
 //            System.out.println("v1: " + v1);
 //            String v2 = (String) IS.readObject();
